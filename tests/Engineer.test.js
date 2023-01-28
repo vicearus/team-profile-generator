@@ -1,3 +1,6 @@
+const Employee = require("../classes/Employee");
+const Engineer = require("../classes/Engineer");
+
 describe("Engineer", () => {
     it("Tests if Engineer name property returns name value", () => {
         const name = "John Doe";
