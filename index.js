@@ -88,6 +88,31 @@ const askEngineer = () => {
         })
 }
 
+// Function to prompt for intern employee properties
+const askIntern = () => {
+    inquirer.prompt(internQuestions)
+        .then((response) => {
+            const intern = new Intern(
+                response.internName,
+                response.internID,
+                response.internEmail,
+                response.internSchool
+            );
+            const makeIntern =
+                `
+                    <div class="spaced stack-flex card">
+                        <h3>${intern.name}</h3>
+                        <p>Employee ID: ${intern.id}</p>
+                        <p>Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
+                        <p>School: ${intern.school}</p>
+                    </div>
+                `
+            internTeam.push(makeIntern);
+            console.log("-----Intern add to team!-----");
+            askAddMember();
+        })
+}
+
 const generateHTML = () => {
     fs.writeFile("./dist/index.html",
         `
@@ -150,17 +175,11 @@ const generateHTML = () => {
                             ${engineerTeam.join("")}
                         </div>
                     <h2>Interns</h2>
-                    <div class="main-card side-flex" alt="flex for intern">
-                        <div class="spaced stack-flex card">
-                            <h3>Name</h3>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                            <p>stuff</p>
+                        <div class="main-card side-flex" alt="flex for intern">
+                            ${internTeam.join("")}
                         </div>
-                    </div>
                 </div>
             </div>
-            <script src="./script.js"></script>
         </body>
         </html>
     `,
