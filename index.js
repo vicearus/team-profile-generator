@@ -4,6 +4,64 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const questions = require("./questions");
 const fs = require("fs");
+const managerQuestions = questions.managerQuestions;
+const engineerQuestions = questions.engineerQuestions;
+const internQuestions = questions.internQuestions;
+// Array to store employee information
+const managerTeam = [];
+const engineerTeam = [];
+const internTeam = [];
+
+const init = () => {
+    askManager();
+}
+
+const askManager = () => {
+    console.log("Answer the questions below to create your team!");
+    inquirer.prompt(managerQuestions)
+        .then((response) => {
+            const manager = new Manager(
+                response.managerName,
+                response.managerID,
+                response.managerEmail,
+                response.managerOffice
+            );
+            const makeManager = 
+                `
+                <div class="spaced stack-flex card">
+                    <h3>${manager.name}</h3>
+                    <p>Employee ID: ${manager.id}</p>
+                    <p>Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
+                    <p>Office Number:${manager.officeNumber}</p>
+                </div>
+                `
+            managerTeam.push(makeManager);
+            console.log("-----Manager add to team!-----");
+            askAddMember();
+        })
+}
+
+// Function to prompt adding engineer or intern to team
+const askAddMember = () => {
+    inquirer.prompt(addMember)
+        .then((response) => {
+            switch (response.teamMember) {
+                case "Manager":
+                    askManager();
+                    break
+                case "Engineer":
+                    askEngineer();
+                    break
+                case "Intern":
+                    askIntern();
+                    break
+                case "I'm done":
+                    console.log("Generating HTML file...");
+                    generateHTML();
+                    break
+            }
+        })
+}
 
 const generateHTML = () => {
     fs.writeFile("./dist/index.html",
@@ -58,27 +116,9 @@ const generateHTML = () => {
             <div>
                 <h1>My Team</h1>
                 <div class="stack-flex" alt="flex for employees">
-                    <h2>Manager</h2>
+                    <h2>Managers</h2>
                     <div class="main-card side-flex  " alt="flex for manager">
-                        <div class="spaced stack-flex card">
-                            <h3>Name</h3>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                        </div>
-                        <div class="spaced stack-flex card">
-                            <h3>Name</h3>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                        </div>
-                        <div class="spaced stack-flex card">
-                            <h3>Name</h3>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                        </div>
-        
+                            ${managerTeam.join("")}
                     </div>
                     <h2>Engineers</h2>
         
@@ -120,3 +160,5 @@ const generateHTML = () => {
     `,
         (error) => error ? console.error(error) : console.log("HTML file generated!"))
 }
+
+init();
