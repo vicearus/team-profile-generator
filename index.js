@@ -63,6 +63,31 @@ const askAddMember = () => {
         })
 }
 
+// Function to prompt for engineer employee properties
+const askEngineer = () => {
+    inquirer.prompt(engineerQuestions)
+        .then((response) => {
+            const engineer = new Engineer(
+                response.engineerName,
+                response.engineerID,
+                response.engineerEmail,
+                response.engineerGitHub
+            );
+            const makeEngineer =
+                `
+                <div class="spaced stack-flex card">
+                    <h3>${engineer.name}</h3>
+                    <p>Employee ID: ${engineer.id}</p>
+                    <p>Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
+                    <p>GitHub: <a href="https://github.com/${engineer.gitHub}">${engineer.gitHub}</a></p>
+                </div>
+                `
+            engineerTeam.push(makeEngineer);
+            console.log("-----Engineer add to team!-----");
+            askAddMember();
+        })
+}
+
 const generateHTML = () => {
     fs.writeFile("./dist/index.html",
         `
@@ -117,33 +142,14 @@ const generateHTML = () => {
                 <h1>My Team</h1>
                 <div class="stack-flex" alt="flex for employees">
                     <h2>Managers</h2>
-                    <div class="main-card side-flex  " alt="flex for manager">
+                        <div class="main-card side-flex  " alt="flex for manager">
                             ${managerTeam.join("")}
-                    </div>
+                        </div>
                     <h2>Engineers</h2>
-        
-                    <div class="main-card side-flex" alt="flex for engineer">
-                        <div class="spaced stack-flex card">
-                            <h3>Name</h3>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                            <p>stuff</p>
+                        <div class="main-card side-flex" alt="flex for engineer">
+                            ${engineerTeam.join("")}
                         </div>
-                        <div class="spaced stack-flex card">
-                            <h3>Name</h3>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                        </div>
-                        <div class="spaced stack-flex card">
-                            <h3>Name</h3>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                            <p>stuff</p>
-                        </div>
-                    </div>
                     <h2>Interns</h2>
-        
                     <div class="main-card side-flex" alt="flex for intern">
                         <div class="spaced stack-flex card">
                             <h3>Name</h3>
