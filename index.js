@@ -80,7 +80,7 @@ const askEngineer = () => {
                     <h3>${engineer.name}</h3>
                     <p>Employee ID: ${engineer.id}</p>
                     <p>Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-                    <p>GitHub: <a href="https://github.com/${engineer.gitHub}">${engineer.gitHub}</a></p>
+                    <p>GitHub: <a target="_blank" href="https://github.com/${engineer.gitHub}">${engineer.gitHub}</a></p>
                 </div>
                 `
             engineerTeam.push(makeEngineer);
