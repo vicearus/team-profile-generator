@@ -76,7 +76,7 @@ const addMember = [
         type: "list",
         message: "What team members would you like to add?",
         name: "teamMember",
-        choices: ["Engineer", "Intern", "I'm done"]
+        choices: ["Manager", "Engineer", "Intern", "I'm done"]
     }
 ]
 

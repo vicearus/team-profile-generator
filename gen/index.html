@@ -1,0 +1,113 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>        
+            <style>
+            .main-card{
+                width: 100%;
+                border: 4px solid black;
+                border-radius: 20px;
+                flex-wrap: wrap;
+                margin: 1% 0%
+            
+            }
+            .stack-flex {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                flex: 1 1 50%;
+            }
+            
+            /*flex rows side by side */
+            .side-flex {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                flex: 1 1 50%;
+            }
+            
+            /* margin and padding default */
+            .spaced {
+                margin: 2%;
+                padding: 0% 3%;
+            }
+            
+            .card {
+                border: 1px solid green;
+                width: 100%;
+            }
+            h1 {
+                text-align: center;
+            }
+            </style>
+        
+        </head>
+        
+        <body>
+            <div>
+                <h1>My Team</h1>
+                <div class="stack-flex" alt="flex for employees">
+                    <h2>Managers</h2>
+                        <div class="main-card side-flex  " alt="flex for manager">
+                            
+                <div class="spaced stack-flex card">
+                    <h3>Armond V</h3>
+                    <p>Employee ID: 123</p>
+                    <p>Email: <a href="mailto:av@email.com">av@email.com</a></p>
+                    <p>Office Number:111</p>
+                </div>
+                
+                <div class="spaced stack-flex card">
+                    <h3>Jessie V</h3>
+                    <p>Employee ID: 124</p>
+                    <p>Email: <a href="mailto:jv@email.com">jv@email.com</a></p>
+                    <p>Office Number:112</p>
+                </div>
+                
+                        </div>
+                    <h2>Engineers</h2>
+                        <div class="main-card side-flex" alt="flex for engineer">
+                            
+                <div class="spaced stack-flex card">
+                    <h3>Melody V</h3>
+                    <p>Employee ID: 113</p>
+                    <p>Email: <a href="mailto:mv@email.com">mv@email.com</a></p>
+                    <p>GitHub: <a href="https://github.com/melodeedee">melodeedee</a></p>
+                </div>
+                
+                <div class="spaced stack-flex card">
+                    <h3>Grace V</h3>
+                    <p>Employee ID: 114</p>
+                    <p>Email: <a href="mailto:gv@emal.com">gv@emal.com</a></p>
+                    <p>GitHub: <a href="https://github.com/melogeegee">melogeegee</a></p>
+                </div>
+                
+                        </div>
+                    <h2>Interns</h2>
+                        <div class="main-card side-flex" alt="flex for intern">
+                            
+                    <div class="spaced stack-flex card">
+                        <h3>Anjo V</h3>
+                        <p>Employee ID: 115</p>
+                        <p>Email: <a href="mailto:jov@email.com">jov@email.com</a></p>
+                        <p>School: UCI</p>
+                    </div>
+                
+                    <div class="spaced stack-flex card">
+                        <h3>Aljer V</h3>
+                        <p>Employee ID: 116</p>
+                        <p>Email: <a href="mailto:jerv@email.com">jerv@email.com</a></p>
+                        <p>School: UCLA</p>
+                    </div>
+                
+                        </div>
+                </div>
+            </div>
+        </body>
+        </html>
+    

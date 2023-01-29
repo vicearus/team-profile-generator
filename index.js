@@ -7,6 +7,7 @@ const fs = require("fs");
 const managerQuestions = questions.managerQuestions;
 const engineerQuestions = questions.engineerQuestions;
 const internQuestions = questions.internQuestions;
+const addMember = questions.addMember;
 // Array to store employee information
 const managerTeam = [];
 const engineerTeam = [];
@@ -114,7 +115,7 @@ const askIntern = () => {
 }
 
 const generateHTML = () => {
-    fs.writeFile("./dist/index.html",
+    fs.writeFile("./gen/index.html",
         `
         <!DOCTYPE html>
         <html lang="en">
@@ -157,6 +158,9 @@ const generateHTML = () => {
             .card {
                 border: 1px solid green;
                 width: 100%;
+            }
+            h1 {
+                text-align: center;
             }
             </style>
         
